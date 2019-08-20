@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Aks
                         var kubeClusters = string.IsNullOrEmpty(ResourceGroupName)
                             ? Client.ManagedClusters.List()
                             : Client.ManagedClusters.ListByResourceGroup(ResourceGroupName);
-                        WriteObject(kubeClusters.Select(PSMapper.Instance.Map<PSKubernetesCluster>));
+                        WriteObject(PSMapper.Instance.Map<PSKubernetesCluster>(kubeClusters));
                         break;
                     default:
                         throw new ArgumentException(Resources.ParameterSetError);
